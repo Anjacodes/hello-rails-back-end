@@ -41,7 +41,7 @@ constructor() {
         return current.value;
     }
   
-  add_at(index, item) {
+  addAt(index, item) {
         if(index>0 && index >= this.length) return null;
         if(index === 0) {
             this.head = new Node(item, this.head);
