@@ -41,29 +41,27 @@ constructor() {
         return current.value;
     }
   
-  addAt(index, item) {
-    if(index<0 && index >= this.length) return null;
-        if(index == 0) {
-            this.head = new Node(item, this.head);
-            return;
+ addAt(index, item) {
+        if(index<0 && index > this.length) return false;
+
+        const node = new Node(item);
+
+        if(index === 0) {
+            node.next_node = this.head;
+            this.head = node;
+        } else {
+            let previous = this.head;
+
+            for (let i = 0; i<index -1; i++) {
+                previous = previous.next_node;
+            }
+            node.next_node = previous.next_node;
+            previous.next_node = node;
         }
-
-        let newNode = new Node(item);
-        let current, previous;
-
-        current = this.head;
-        let count = 0;
-        while(count < index) {
-            previous = current;
-            count++;
-            current = current.next_node;
-        }
-
-        newNode.next_node = current;
-        previous .next_node = newNode;
-
         this.length++;
-    }
+        return true;
+     }
+  
   remove(index) {
         if (index > 0 && index > this.length) {
             return;
