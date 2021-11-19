@@ -42,6 +42,12 @@ constructor() {
     }
   
   addAt(index, item) {
+        if(!this.head) {
+            this.head = newNode;
+            this.tail = this.head;
+        } else {
+            this.tail.next_node = newNode;
+            this.tail = newNode;
         if(index>0 && index >= this.length) return null;
         if(index === 0) {
             this.head = new Node(item, this.head);
